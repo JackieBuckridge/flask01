@@ -22,6 +22,7 @@ def upload_file():
     if file:
         filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filename)
+        print("File path:",file)
         return 'Video uploaded successfully'
 
 @app.route('/uploads/<filename>')

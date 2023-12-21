@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request,send_from_directory
+import time
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
@@ -20,7 +21,7 @@ def upload_file():
         return "No selected video file"
 
     if file:
-        filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+        filename = os.path.join(app.config['UPLOAD_FOLDER'], f"{file.filename}_{time.time()}")
         file.save(filename)
         print("File path:",file)
         return 'Video uploaded successfully'
